@@ -77,5 +77,11 @@ namespace Tree
         {
             return "";
         }
+
+        public virtual Node eval(Environment env)
+        {
+            Console.Error.WriteLine("Error: invalid expression");
+            return Nil.getInstance();
+        }
     }
 }
