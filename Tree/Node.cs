@@ -83,5 +83,17 @@ namespace Tree
             Console.Error.WriteLine("Error: invalid expression");
             return Nil.getInstance();
         }
+
+        public static int length(Node exp)
+        {
+            if (exp.isNull())
+                return 0;
+            if (!exp.isPair())
+                return -1;
+            int count = length(exp.getCdr());
+            if (count == -1)
+                return -1;
+            return count++;
+        }
     }
 }

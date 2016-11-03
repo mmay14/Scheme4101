@@ -40,7 +40,7 @@ namespace Tree
         // Instead of Nil(), we use null to terminate the list.
 
         private Node frame;     	// the innermost scope, an assoc list
-	private Environment env;	// the enclosing environment
+	    private Environment env;	// the enclosing environment
    
         public Environment()
         {
@@ -99,7 +99,7 @@ namespace Tree
                 return env.lookup(id);
             else
                 // get the value out of the list we got from find()
-		return val.getCar();
+		    return val.getCar();
         }
 
 
@@ -111,7 +111,13 @@ namespace Tree
 
         public void assign(Node id, Node val)
         {
-            // TODO: implement this function
+            Node node = find(id, frame);
+            if (node == null && env == null)
+                Console.Error.WriteLine("Undefined variable " + id.getName());
+            else if (node == null)
+                env.assign(id, val);
+            else
+                node.setCar(val);
         }
     }
 }

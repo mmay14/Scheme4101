@@ -6,11 +6,18 @@ namespace Tree
 {
     public class If : Special
     {
-	public If() { }
+        public If()
+        {
+        }
 
         public override void print(Node t, int n, bool p)
         {
             Printer.printIf(t, n, p);
+        }
+
+        public override Node eval(Node exp, Environment env)
+        {
+            // TODO: implement
         }
     }
 }

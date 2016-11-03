@@ -6,11 +6,35 @@ namespace Tree
 {
     public class Begin : Special
     {
-	public Begin() { }
+        public Begin()
+        {
+        }
 
         public override void print(Node t, int n, bool p)
         {
             Printer.printBegin(t, n, p);
+        }
+
+        public override Node eval(Node exp, Environment env)
+        {
+            if (Node.length(exp) < 2)
+            {
+                Console.Error.WriteLine("Error: invalid begin expression");
+                return Nil.getInstance();
+            }
+            else
+            {
+                return begin(exp.getCdr(), env);
+            }
+        }
+
+        private Node begin(Node exp, Environment env)
+        {
+            Node node = exp.getCar().eval(env);
+            Node cdr = exp.getCdr();
+            if (cdr.isNull())
+                return node;
+            return begin(cdr, env);
         }
     }
 }

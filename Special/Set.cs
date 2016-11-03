@@ -6,11 +6,18 @@ namespace Tree
 {
     public class Set : Special
     {
-	public Set() { }
-	
+        public Set()
+        {
+        }
+
         public override void print(Node t, int n, bool p)
         {
             Printer.printSet(t, n, p);
+        }
+
+        public override Node eval(Node exp, Environment env)
+        {
+
         }
     }
 }
