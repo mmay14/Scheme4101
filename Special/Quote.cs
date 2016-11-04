@@ -17,7 +17,16 @@ namespace Tree
 
         public override Node eval(Node exp, Environment env)
         {
-            // TODO: implement
+            if (Node.length(exp) != 2)
+            {
+                Console.Error.WriteLine("Error: invalid expression");
+                return (Node) Nil.getInstance();
+            }
+            else
+            {
+                Node quoteExp = exp.getCdr().getCar();
+                return quoteExp;
+            }
         }
     }
 }
