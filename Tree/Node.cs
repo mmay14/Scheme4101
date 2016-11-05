@@ -41,6 +41,8 @@ namespace Tree
         public virtual bool isSymbol() { return false; }  // Ident
         public virtual bool isNull()   { return false; }  // Nil
         public virtual bool isPair()   { return false; }  // Cons
+        public virtual bool isProcedure() { return false; }  // BuiltIn
+        public virtual bool isEnvironment() { return false; } // Environment
 
         // Since C# does not have covariant override, it is not possible
         // for the getCar and getCdr methods to implement the interface
@@ -78,6 +80,11 @@ namespace Tree
             return "";
         }
 
+        public virtual int getIntVal()
+        {
+            return 0;
+        }
+
         public virtual Node eval(Environment env)
         {
             Console.Error.WriteLine("Error: invalid expression");
@@ -94,6 +101,13 @@ namespace Tree
             if (count == -1)
                 return -1;
             return count++;
+        }
+
+        public virtual Node apply(Node args)
+        {
+            Console.Error.WriteLine("Error: ");
+            // TODO: come up with an error message
+            return (Node)Nil.getInstance();
         }
     }
 }

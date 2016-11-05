@@ -19,7 +19,7 @@ namespace Tree
         {
             if (Node.length(exp) != 3)
             {
-                Console.Error.WriteLine("Error: invalid expression");
+                Console.Error.WriteLine("Error: invalid set expression");
                 return (Node) Nil.getInstance();
             }
             else

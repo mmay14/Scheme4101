@@ -13,6 +13,11 @@ namespace Tree
             intVal = i;
         }
 
+        public override int getIntVal()
+        {
+            return intVal;
+        }
+
         public override void print(int n)
         {
             Printer.printIntLit(n, intVal);

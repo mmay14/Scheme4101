@@ -54,6 +54,8 @@ namespace Tree
             env = e;
         }
 
+        public override bool isEnvironment() { return true; }
+
         public override void print(int n) {
             // there got to be a more efficient way to print n spaces
             for (int i = 0; i < n; i++)
