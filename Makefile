@@ -16,3 +16,6 @@ clean:
 
 veryclean:
 	@rm -f $(EXE) *~ */*~
+
+README.txt:
+	@echo "Madeline May and Jackie Robinson" > README.txt
