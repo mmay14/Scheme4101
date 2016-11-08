@@ -21,16 +21,11 @@ namespace Tree
             {
                 Console.Error.WriteLine("Error: invalid set expression");
                 return (Node) Nil.getInstance();
-            }
-            else
-            {
-                Node var = exp.getCdr().getCar();
-                Node varExp = exp.getCdr().getCdr().getCar();
-                env.assign(var, varExp.eval(env));
-
-                // TODO: what to return if false and num = 3
-                // unspecified
-            }
+            }        
+            Node var = exp.getCdr().getCar();
+            Node varExp = exp.getCdr().getCdr().getCar();
+            env.assign(var, varExp.eval(env));
+            return Unspecific.getInstance();
         }
     }
 }
