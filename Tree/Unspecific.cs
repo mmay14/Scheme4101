@@ -3,9 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Scheme4101.Tree
+namespace Tree
 {
-    class Unspecific
+    class Unspecific : Node
     {
+        private static Unspecific instance = new Unspecific();
+
+        public static Unspecific getInstance()
+        {
+            return Unspecific.instance;
+        }
+
+        public override void print(int n)
+        {
+            //TODO: implement
+        }
+
     }
 }

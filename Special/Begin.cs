@@ -30,9 +30,9 @@ namespace Tree
 
         private Node begin(Node exp, Environment env)
         {
-            Node car = exp.getCar();
-            Node node = car.eval(env);
-            Node cdr = exp.getCdr();
+            var car = exp.getCar();
+            var node = car.eval(env);
+            var cdr = exp.getCdr();
             if (cdr.isNull())
                 return node;
             return begin(cdr, env);
