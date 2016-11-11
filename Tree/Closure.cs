@@ -38,12 +38,40 @@ namespace Tree
             Console.WriteLine('}');
         }
 
-        // TODO: The method apply() should be defined in class Node
-        // to report an error.  It should be overridden only in classes
-        // BuiltIn and Closure.
-        public /* override */ Node apply (Node args)
+        private static void assignParams(Node parameters, Node args, Environment env)
         {
-            return new StringLit("Error: Closure.apply not yet implemented");
+            if (parameters.isNull() && args.isNull())
+                return;
+            if (parameters.isNull() || args.isNull())
+                Console.Error.WriteLine("Error: number of arguments do not match number of parameters");
+            else if (parameters.isSymbol())
+                env.define(parameters, args);        
+            else if (parameters.isPair() && args.isPair())
+            {
+                env.define(parameters.getCar(), args.getCar());
+                assignParams(parameters.getCdr(), args.getCdr(), env);
+            }
+            else
+                Console.Error.WriteLine("Error: invalid closure");
+        }
+
+        private Node evalFunc(Node exp, Environment env)
+        {
+            var car = exp.getCar();
+            var node = car.eval(env);
+            var cdr = exp.getCdr();
+            if (cdr.isNull())
+                return node;
+            return evalFunc(cdr, env);
+        }
+
+        public override Node apply(Node args)
+        {
+            var car = fun.getCdr().getCar();
+            var cdr = fun.getCdr().getCdr();
+            env = new Environment(env);
+            assignParams(car, args, env);
+            return evalFunc(cdr, env);
         }
     }    
 }

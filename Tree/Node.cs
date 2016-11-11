@@ -105,9 +105,8 @@ namespace Tree
 
         public virtual Node apply(Node args)
         {
-            Console.Error.WriteLine("Error: ");
-            // TODO: come up with an error message
-            return (Node)Nil.getInstance();
+            Console.Error.WriteLine("Error: This is not a procedure");
+            return Nil.getInstance();
         }
     }
 }
