@@ -100,7 +100,8 @@ namespace Tree
             }
             if (name.Equals("display"))
             {
-                // TODO
+                Console.Write(arg1);
+                return Unspecific.getInstance();
             }
             Console.Error.WriteLine("Error: wrong number of arguments");
             return Nil.getInstance();
