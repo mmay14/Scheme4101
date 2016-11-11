@@ -17,7 +17,13 @@ namespace Tree
 
         public override Node eval(Node exp, Environment env)
         {
-            // TODO: implement
+            
+            if (Node.length(exp) < 1)
+            {
+                Console.Error.WriteLine("Error: invalid regular expression");
+                return Nil.getInstance();
+            }
+            //TODO: map variable
         }
     }
 }
