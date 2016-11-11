@@ -107,7 +107,8 @@ namespace Tree
 
         public void define(Node id, Node val)
         {
-            // TODO: implement this function
+            var newFrame = new Cons(id, new Cons(val, Nil.getInstance()));
+            frame = new Cons( newFrame,frame );
         }
 
 

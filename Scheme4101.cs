@@ -53,16 +53,47 @@ public class Scheme4101
         Parser parser = new Parser(scanner, builder);
         Node root;
 
-        // TODO: Create and populate the built-in environment and
-        // create the top-level environment
+        string[] builtInFunctions = new string[24]
+   {
+      "symbol?",
+      "number?",
+      "b+",
+      "b-",
+      "b*",
+      "b/",
+      "b=",
+      "b<",
+      "car",
+      "cdr",
+      "cons",
+      "set-car!",
+      "set-cdr!",
+      "null?",
+      "pair?",
+      "eq?",
+      "procedure?",
+      "read",
+      "write",
+      "display",
+      "newline",
+      "eval",
+      "apply",
+      "interaction-environment"
+   };
+        env = new Tree.Environment();
+        foreach (var function in builtInFunctions)
+        {
+            var ident = new Ident(function);
+            env.define(ident, new BuiltIn(ident));
+        }
 
-        // Read-eval-print loop
+        env = new Tree.Environment(env);  
 
-        // TODO: print prompt and evaluate the expression
         root = (Node) parser.parseExp();
         while (root != null) 
         {
-            root.print(0);
+            Console.Write(">");
+            root.eval(env).print(0);
             root = (Node) parser.parseExp();
         }
 

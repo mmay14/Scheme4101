@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Tree
 {
@@ -11,12 +8,17 @@ namespace Tree
 
         public static Unspecific getInstance()
         {
-            return Unspecific.instance;
+            return instance;
         }
 
         public override void print(int n)
         {
-            //TODO: implement
+            for (var index = 0; index < n; ++index)
+                Console.Write(' ');
+            Console.Write("#{Unspecified}");
+            if (n < 0)
+                return;
+            Console.WriteLine();
         }
 
     }
