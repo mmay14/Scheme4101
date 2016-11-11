@@ -48,32 +48,37 @@ namespace Tree
             if (num > 2)
                 Console.Error.WriteLine("Error: too many arguments");
             else if (num == 0)
-                return this.apply0();
+                return apply0();
             else if (num == 1)
-                return this.apply1(args.getCar());
-            return this.apply2(args.getCar(), args.getCdr().getCar());
+                return apply1(args.getCar());
+            return apply2(args.getCar(), args.getCdr().getCar());
         }
 
         private Node apply0()
         {
-            string name = this.symbol.getName();
+            string name = symbol.getName();
             if (name.Equals("read"))
             {
-                // TODO 
+                var parser = new Parser(new Scanner(Console.In), new TreeBuilder());
+                var exp = (Node) parser.parseExp();
+                if (exp != null)
+                    return exp;
+                return new Ident("end-of-file");
             }
             if (name.Equals("newline"))
             {
-                // TODO
+                Console.WriteLine();
+                return Unspecific.getInstance();
             }
             if (name.Equals("interaction-environment"))
-                // TODO
+                return Scheme4101.env;
             Console.Error.WriteLine("Error: wrong number of arguments");
             return Nil.getInstance();
         }
 
         private Node apply1(Node arg1)
         {
-            string name = this.symbol.getName();
+            string name = symbol.getName();
             if (name.Equals("car"))
                 return arg1.getCar();
             if (name.Equals("cdr"))
@@ -90,15 +95,12 @@ namespace Tree
                 return BoolLit.getInstance(arg1.isProcedure());
             if (name.Equals("write"))
             {
-                // TODO
+                arg1.print(-1);
+                return Unspecific.getInstance();
             }
             if (name.Equals("display"))
             {
                 // TODO
-            }
-            if (name.Equals("load"))
-            {
-                // TODO: not part of list on project sheet
             }
             Console.Error.WriteLine("Error: wrong number of arguments");
             return Nil.getInstance();
@@ -106,7 +108,7 @@ namespace Tree
 
         private Node apply2(Node arg1, Node arg2)
         {
-            string name = this.symbol.getName();
+            string name = symbol.getName();
             if (name.Equals("eq?"))
             {
                 if (arg1.isSymbol() && arg2.isSymbol())
@@ -117,11 +119,13 @@ namespace Tree
                 return new Cons(arg1, arg2);
             if (name.Equals("set-car!"))
             {
-                // TODO
+                arg1.setCar(arg2);
+                return Unspecific.getInstance();
             }
             if (name.Equals("set-cdr!"))
             {
-               // TODO
+                arg1.setCdr(arg2);
+                return Unspecific.getInstance();
             }
             if (name.Equals("eval"))
             {

@@ -7,8 +7,12 @@ using Tree;
 
 public class Scheme4101
 {
+
+    public static Tree.Environment env = null;
+
     public static int Main(string[] args)
     {
+        
         // Create scanner that reads from standard input
         Scanner scanner = new Scanner(Console.In);
         
