@@ -58,7 +58,7 @@ namespace Tree
 
         public override void print(int n) {
             // there got to be a more efficient way to print n spaces
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < n; ++i)
                 Console.Write(' ');
             Console.WriteLine("#{Environment");
             if (frame != null)
@@ -90,7 +90,7 @@ namespace Tree
 
         public Node lookup(Node id)
         {
-            Node val = find(id, frame);
+            var val = find(id, frame);
             if (val == null && env == null)
             {
                 Console.Error.WriteLine("undefined variable " + id.getName());
