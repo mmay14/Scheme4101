@@ -100,7 +100,7 @@ namespace Tree
             int count = length(exp.getCdr());
             if (count == -1)
                 return -1;
-            return count++;
+            return count += 1;
         }
 
         public virtual Node apply(Node args)
