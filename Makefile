@@ -4,6 +4,7 @@ SRC =   Scheme4101.cs $(wildcard Tree/*.cs) $(wildcard Special/*.cs)
 EXE =   Scheme4101.exe
 
 all: $(EXE)
+	make README.txt
 
 $(EXE): $(SRC) $(LIB)
 	mcs /out:$(EXE) $(SRC) /addmodule:$(LIB)
