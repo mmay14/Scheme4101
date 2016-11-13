@@ -40,7 +40,10 @@ namespace Tree
             var expression = clause.getCdr();
             if (testExp.isSymbol() && testExp.getName().Equals("else"))
             {
-                
+                if (!expression.isNull() && exp.getCdr().isNull())
+                    return evalExp(expression, env);
+                Console.Error.WriteLine("Error: invalid expression");
+                return (Node)Nil.getInstance();
             }
             var testValid = testExp.eval(env);
             if (testValid == BoolLit.getInstance(false))
