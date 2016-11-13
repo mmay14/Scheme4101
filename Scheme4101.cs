@@ -94,8 +94,9 @@ public class Scheme4101
         while (root != null) 
         {
             root.eval(env).print(0);
-            root = (Node) parser.parseExp();
             Console.Write("> ");
+            root = (Node)parser.parseExp();
+            
         }
 
         return 0;
