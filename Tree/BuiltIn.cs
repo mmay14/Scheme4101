@@ -144,7 +144,7 @@ namespace Tree
             {
                 if (arg1.isNumber() && arg2.isNumber())
                     return evalArithmetic(arg1.getIntVal(), arg2.getIntVal());
-                Console.Error.WriteLine("Error: both arguments should be numbers");
+                Console.Error.WriteLine("Error: invalid arguments");
                 return Nil.getInstance();
             }
             Console.Error.WriteLine("Error: wrong number of arguments");

@@ -21,7 +21,7 @@ namespace Tree
         public override Node eval(Node exp, Environment env)
         {
             var length = Node.length(exp);
-            if (length != 3 || length != 4)
+            if (length < 3 || length > 4)
             {
                 Console.Error.WriteLine("Error: Invalid length for if expression");
                 return Nil.getInstance();
@@ -35,7 +35,7 @@ namespace Tree
             else //If <test> yields a false value and no <alternate> is specified, then the result of the expression is unspecified.
                 alternate = Unspecific.getInstance();
 
-            if (test.eval(env) == BoolLit.getInstance(true))
+            if (test.eval(env) != BoolLit.getInstance(false))
                 return consequent.eval(env);
             return alternate.eval(env);
         }
